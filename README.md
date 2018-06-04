@@ -51,6 +51,8 @@ The technical analysis method this module support are:
 15. TMA
 16. BIAS
 
+![thinkorswimimage](https://github.com/peter001zhang/q_trading/blob/master/image/thinkorswim.png)
+
 If you don't understand the calculation formula, please search in Google.
 
 Besides, in this module, I also define a function whose inputs are data for two technical line(a,b), and the outputs are four numbers(-1,-0.5,0.5,1). "-1" means a came above b from the below, "-0.5" means a is alway bigger than b, "0.5" means b is always bigger than a, and "1" means b came above a from below. this could be used for the analysis of MACD.
@@ -77,9 +79,13 @@ According to the experiment, I discover that SVR did the worst job, and XJBOOST 
 
 Deepsense network is Deep learning structure used on mobile sensor's data analysis. In my point of view, the fluctuation of stock price looks very simillar with the sensor's data. So I adjusted the structure of Deepsense to make it more suitable for my data set. 
 
+![attention_model_image](https://github.com/peter001zhang/q_trading/blob/master/image/am.jpg)
+
 The reason for adding an Attention Model is that I have seen an paper about face recognition, telling that using 1*1 convolution kernels for three times, and multiply is with the original image, could increase the weights for the most important features after training, and those important features are nose, eyes, mouths. So I am trying to use the same ideas to get the most important feature information from the input_data.
 
 The final experiment shows that the Deepsense model with attention model perform better than the original Deepsense model. Though the reult is also not as good as the LSTM, I can still expected to get better result after using the 5min data and 1min data.
+
+![lstm_image](https://github.com/peter001zhang/q_trading/blob/master/image/lstm.jpg)
 
 In a word, the LSTM gets the best results, and the avearge R2 score for 10 stocks could be higher than 90%.
 
@@ -137,6 +143,8 @@ In my view, the Key point of DQN should be:
 
 DDQN is based on the DQN, the difference is the DDQN use the target net to calculate the Qmax and get the corresponding action, and use the eval net to calculate the Q(next state, action) and the traditional Qmax.
 
+![dueling_image](https://github.com/peter001zhang/q_trading/blob/master/image/dueling.png)
+
 Dueling DDQN is based on the DDQN. the idea is separate the state and the action in the NN, which means at the very last of NN model, we separate the action that supposed to be output into actions and state. Then substract the value of action with the mean of every actions. And finally added the state and the actions as the outputs. The reason for doing this is that in some state, whatever the action you do, there isn't any influence on the next state. So in the Quantitative trading, I can understand it like this, when your initial capital is not big enough, whatever the action you made, it can hardly effect the stock price.
 
 ### Reinforcement Learning Module 2
@@ -144,6 +152,8 @@ Dueling DDQN is based on the DDQN. the idea is separate the state and the action
 In the previous Reinforcement module I discover that because of the price fluctuation in daily data is not as high as day-trading, it will last a long period of bear of bull market, so the DQN agent will tend to choose buy at the start of bull market,and hold for a very long time. This is actually the right decision, but I want the agent to be more sensitive to the price, which mean through short and buy to earn money in the fluctuation of stock price.
 
 So I design a new model to fix this, and the key point of this model are two parts:
+
+![price_image](https://github.com/peter001zhang/q_trading/blob/master/image/price.png)
 
 1. we understand that if the price data is concussion in a fix range, the reinforcement learning agent could learning the strategies better. So I use the the up and down line of VWAP(4std), to reshape the price data in to (-1,1). But even though I set the standard deviation as 4 times, there are still some price get out of the range, so I set those data into 1.1 and -1.1, which means out of the range.
 
@@ -171,6 +181,8 @@ The idea is really simple, so I won't tell it in details.
 **DDPG model**: the code has been finished, and I am testing it right now and will put it into the module as soon as possible.
 
 **NLP**: the present idea is using the web crawler to get the title and first paragraph of the article in financial news. Then using the stocking price variety as the label to train to NN.
+
+![trendimage](https://github.com/peter001zhang/q_trading/blob/master/image/trend.png)
 
 **GOOGLE TREND**: there is a paper talk about using the GOOGLE TREND to make the predictions, but after several simple test, I found out the result isn't good enough. But I will keep trying.
 
@@ -230,6 +242,8 @@ In a word, the system is not able to get stable profit, but it has made a great 
 15. TMA
 16. BIAS
 
+![thinkorswimimage](https://github.com/peter001zhang/q_trading/blob/master/image/thinkorswim.png)
+
 指示线数据的计算方法请自行百度，这里不再赘述。
 
 除此之外，在这个模块中我还定义了一个函数，它的输入是两条指示线（a,b）的数据，输出则是4个值（-1，-0.5,0.5,1），分别对应a在上一点小于b，但是这一点的值大于b；a在上一点的值和这一点的值都大于b；b在上一点和这一点的值都大于a；b在上一点的值小于a，但是在这一点的值大于a。这样我们就可以获得的向上穿过点和向下穿过点的数据。
@@ -252,9 +266,15 @@ In a word, the system is not able to get stable profit, but it has made a great 
 
 根据实验，我发现SVR的效果是最差的，XJBOOST的效果也不是很好，但是XJBOOST的效果很吃调参，我对XJBOOST的研究并不够深刻，所以或许有提升的可能。GRU可以理解成一个简化的LSTM，在这里的测试阶段我发现虽然速度很快，但是效果比LSTM还是有点差距。
 
+![deepsense_image](https://github.com/peter001zhang/q_trading/blob/master/image/deepsense.jpg)
+
 Deepsense网络是一种应用于处理移动端传感器时序数据的深度学习框架，在我看来，股价的波动和传感器时序数据的波动有异曲同工的感觉，所以我根据数据集的特点，对原本框架进行修改并使用在价格预测系统中。为Deepsense模型添加注意力模型的原因是，我在一篇关于人脸识别的论文中看到的一个方法。为了加强鼻子，眼睛，嘴这些最重要的分类特征而使用1*1的卷积核对一张图片进行3次相同的卷积处理，之后与源图片逐位相乘，经过学习最终达到加大重要特征权重的目的。我利用这个思想对数据进行相同的处理，希望的到类似的效果。
 
+![attention_model_image](https://github.com/peter001zhang/q_trading/blob/master/image/am.jpg)
+
 最终效果显示，添加了注意力模型的Deepsense模型相比较原模型而言，效果更好，但是在数据量较小，训练次数较少的情况下依旧没有LSTM表现好。但是我可以期待在获取5min或者1min级别的数据之后，这个模型的效果或许会超过LSTM。
+
+![lstm_image](https://github.com/peter001zhang/q_trading/blob/master/image/lstm.jpg)
 
 总而言之，目前而言lstm的预测效果最好，平均R2能够达到0.9以上。
 
@@ -304,12 +324,16 @@ DQN的重点在我看来有两点：一是remember和replay模块，这将之前
 
 DDQN就是在DQN的基础之上，进一步通过目标网络计算QMAX对应的动作，再由主体网络得到对应Q值的思想。
 
+![dueling_image](https://github.com/peter001zhang/q_trading/blob/master/image/dueling.png)
+
 Dueling DQN的思想则是将环境和动作分开考虑，具体表现在神经网络最后的输出，将本该直接输出的动作值分开成环境和动作，再将每个动作的值减去平均值，加上环境对应神经元的值，作为输出。这样做的原因是在有些环境下无论做什么样的动作，对下一个state都没有什么影响，在量化交易中，我理解成，在本金较低时，无论做什么样的交易动作，其实对股价的影响都是可以忽略不计的。
 
 ### 强化学习模块2：
 在上一个思路中，我发现因为价格在每日的波动幅度不像日交易那么大，会维持一个较长的上升或者下降趋势(即牛市或者熊市)，所以DQNagent选择动作时倾向于在上升的初期选择买入，然后长时间持有，这样的做法当然无可厚非，但是我希望agent能够对价格参数更加的敏感，即在股价波动时也能通过short，buy的选择切换进行套利。
 
 所以我设计了一个全新的模型来解决这个问题，这个模型最重要的思路有两个：
+
+![price_image](https://github.com/peter001zhang/q_trading/blob/master/image/price.png)
 
 1. 如果价格数据在一个固定的范围震荡，强化学习就能更好的学习买卖策略，我通过VWAP的UP线(这里我们设定为4倍标准差)和DOWN线给价格数据转换成在(-1,1)的震荡数据。但是即时我将标准差设为4倍，依旧会有价格超过1和-1的范围，我将这样的数据的值设为1.1和-1.1，理解为超过最高值。
 2. 通过两个强化学习模型分别设计(buy,sell,hold)和(short,cover,hold)的动作，最后的动作输出依据做多模型的优先级比做空模型的优先级更高来进行选择（即先选择做多模型输出的动作，若动作不满足条件，后选择做空模型输出的动作），这样的设计不一定合理，比如在熊市，做空模型的优先级应该高于做多模型，所以我正在通过NLP技术和GOOGLE TREND的数据，对价格的大趋势进行预测，希望能够达到切换优先级的目的。
@@ -331,6 +355,8 @@ Dueling DQN的思想则是将环境和动作分开考虑，具体表现在神经
 DDPG强化学习模型：代码已经实现，现在正处在测试阶段，相信不久之后就能添加到强化学习的模型中。
 
 NLP：目前的思路是通过爬虫技术，获取financial news上文章的标题，副标题和第一段作为输入，通过之后一段时间的股价变动（上升，稳定和下降）作为标签进行训练，期望获得对较长时间范围内的趋势进行预测。
+
+![trendimage](https://github.com/peter001zhang/q_trading/blob/master/image/trend.png)
 
 GOOGLE TREND：有篇文章详细介绍了GOOGLE TREND在对股价趋势预测上的可行性，我已经进行过一些简单的测试，但是测试效果并不理想，但是依旧可以期望在对模型和输入的变动过程中，获得更好的结果。
 
