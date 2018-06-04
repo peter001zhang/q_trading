@@ -1,0 +1,2 @@
+Date,Open,High,Low,Close,Volume,OpenInt
+2017-11-10,24.91,24.95,24.88,24.9499,53308,0
