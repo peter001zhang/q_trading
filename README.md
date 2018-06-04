@@ -73,7 +73,7 @@ The price prediction models are:XGBOOST(REGRESSION), SVR, GRU, LSTM,modified Dee
 
 According to the experiment, I discover that SVR did the worst job, and XJBOOST also couldn't do the job very well. But the training result of XJBOOST depends largly on the adjustment of parameters, and I am not very good at it, so it maybe better after the adjustment. GRU could be understanded as the simplify LSTM, it got higher speed, but the result is not as good as LSTM.
 
-![deepsense_image](https://github.com/peter001zhang/q_trading/tree/master/image/deepsense.jepg)
+![deepsense_image](https://github.com/peter001zhang/q_trading/blob/master/image/1.jpg)
 Deepsense network is Deep learning structure used on mobile sensor's data analysis. In my point of view, the fluctuation of stock price looks very simillar with the sensor's data. So I adjusted the structure of Deepsense to make it more suitable for my data set. 
 
 The reason for adding an Attention Model is that I have seen an paper about face recognition, telling that using 1*1 convolution kernels for three times, and multiply is with the original image, could increase the weights for the most important features after training, and those important features are nose, eyes, mouths. So I am trying to use the same ideas to get the most important feature information from the input_data.
