@@ -141,7 +141,7 @@ In my view, the Key point of DQN should be:
 1. the remember and replay function. In my view of point, the method of randomly choosing previous records(remember) and use it for training is more like a real NN, and it gets better results of course.
 2. it design a target net, which is an NN with later updated weights. And the target net is used for calculating the Qmax of next state, and it solves the problem that the connaction between Qmax and present one is too high.
 
-DDQN is based on the DQN, the difference is the DDQN use the target net to calculate the Qmax and get the corresponding action, and use the eval net to calculate the Q(next state, action) and the traditional Qmax.
+DDQN is based on the DQN, the difference is the DDQN use the eval net to calculate the Qmax and get the corresponding action, and use the target net to calculate the Q(next state, action) and the traditional Qmax.
 
 ![dueling_image](https://github.com/peter001zhang/q_trading/blob/master/image/dueling.png)
 
@@ -322,7 +322,7 @@ DQN就是建立在Qlearning的基础之上开发的Deep Q network，通过使用
 
 DQN的重点在我看来有两点：一是remember和replay模块，这将之前的数据随机选择拿来学习的概念在我看来更加符合神经网络训练的思路，效果也很好。二是引入了目标网络的概念，通过一个参数更新较慢并不直接参加训练的网络来对Qmax的值进行计算，很好的解决了目标计算与当前值相关性过高的问题。
 
-DDQN就是在DQN的基础之上，进一步通过目标网络计算QMAX对应的动作，再由主体网络得到对应Q值的思想。
+DDQN就是在DQN的基础之上，进一步通过主体网络计算QMAX对应的动作，再由目标网络得到对应Q值的思想。
 
 ![dueling_image](https://github.com/peter001zhang/q_trading/blob/master/image/dueling.png)
 
