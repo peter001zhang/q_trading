@@ -169,7 +169,9 @@ The chosen for models is the same as the previous module, including the DQN, DDQ
 
 ### Stocking Picking Strategy Based on Price Prediction and RL Return
 
-I use the LSTM to predict the price data in a period of future, and give the price data as input to the reinforcement learning model, calculate the return. The stock with the highest return will be the chosen one. 
+I use the LSTM to predict the price data in a period of future, the data could already been used for stock picking.
+
+but at the same time, I give the price data as input to the reinforcement learning model, calculate the return. The stock with the highest return will be the chosen one. 
 
 Because the VWAP need the volume data to make the calculations, and the volume data is really hard to predict, so I use the BBIBOLL to reshape the price data.
 
@@ -347,7 +349,10 @@ Dueling DQN的思想则是将环境和动作分开考虑，具体表现在神经
 模型的选择一样，都是基于DQN的变种模型，包括simple DQN, DDQN和Dueling DDQN，代码实现上有所差距，但是思想不变，这里不做过多赘述。
 
 ### 依据预测价格和强化学习回报的选股策略模块：
-这个模块， 故名思议就是通过LSTM预测未来一定时间的价格数据，同时将数据喂给强化学习模型，计算回报，回报最高股票就是通过我们的模型选择出来的股票。这里因为VWAP中涉及到交易量的数据，而交易量数据很难进行预测，所以我们通过BBIBOLL的UP和DOWN线进行价格的映射。
+
+这个模块， 故名思议就是通过LSTM预测未来一定时间的价格数据，这个价格数据本身就可以用来进行选股
+
+但同时我又将数据喂给强化学习模型，计算回报，回报最高股票就是通过我们的模型选择出来的股票。这里因为VWAP中涉及到交易量的数据，而交易量数据很难进行预测，所以我们通过BBIBOLL的UP和DOWN线进行价格的映射。
 
 这个模块的思路较为简单就不做过多赘述了。
 
