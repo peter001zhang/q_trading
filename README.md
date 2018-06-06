@@ -73,7 +73,7 @@ The normalization method is calculate the proportion between each data in the wi
 
 The price prediction models are:XGBOOST(REGRESSION), SVR, GRU, LSTM,modified Deepsense, and Deepsense with Attention Model.
 
-According to the experiment, I discover that SVR did the worst job, and XJBOOST also couldn't do the job very well. But the training result of XJBOOST depends largly on the adjustment of parameters, and I am not very good at it, so it maybe better after the adjustment. GRU could be understanded as the simplify LSTM, it got higher speed, but the result is not as good as LSTM.
+According to the experiment, I discover that SVR did the worst job, and XGBOOST also couldn't do the job very well. But the training result of XGBOOST depends largly on the adjustment of parameters, and I am not very good at it, so it maybe better after the adjustment. GRU could be understanded as the simplify LSTM, it got higher speed, but the result is not as good as LSTM.
 
 ![deepsense_image](https://github.com/peter001zhang/q_trading/blob/master/image/deepsense.jpg)
 
@@ -264,9 +264,9 @@ In a word, the system is not able to get stable profit, but it has made a great 
 
 
 
-价格预测的模块有：XJBOOST(REGRESSION),SVR,GRU,LSTM,修改了模型的Deepsense网络和添加了注意力模型的Deepsense模型。
+价格预测的模块有：XGBOOST(REGRESSION),SVR,GRU,LSTM,修改了模型的Deepsense网络和添加了注意力模型的Deepsense模型。
 
-根据实验，我发现SVR的效果是最差的，XJBOOST的效果也不是很好，但是XJBOOST的效果很吃调参，我对XJBOOST的研究并不够深刻，所以或许有提升的可能。GRU可以理解成一个简化的LSTM，在这里的测试阶段我发现虽然速度很快，但是效果比LSTM还是有点差距。
+根据实验，我发现SVR的效果是最差的，XGBOOST的效果也不是很好，但是XGBOOST的效果很吃调参，我对XGBOOST的研究并不够深刻，所以或许有提升的可能。GRU可以理解成一个简化的LSTM，在这里的测试阶段我发现虽然速度很快，但是效果比LSTM还是有点差距。
 
 ![deepsense_image](https://github.com/peter001zhang/q_trading/blob/master/image/deepsense.jpg)
 
